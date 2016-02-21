@@ -1,0 +1,12 @@
+#wrapper {
+
+	background: #fff url(images/overlay.png) repeat;
+}
+body{
+	background-color: #000;
+}
+body {
+	background: #fff url(images/overlay.png) repeat;
+	padding: 5%;
+	margin-top: 5%;
+}

@@ -1,0 +1,91 @@
+	#header/*header image on index*/
+		{
+			position: relative;
+			background: #ddd url(../images/header.jpg) no-repeat center;
+			background-size: cover;
+			text-align: center;
+			font-family: 'Indie Flower', cursive;
+			font-size: 2vw;
+		}
+
+
+	#logo/*index*/
+		{
+			text-align: center;
+			color: #1d1d1d;
+			font-size: 3vw;
+		}
+	#main/*background gray stripes*/
+		{
+			background: #fff url(images/overlay.png) repeat;
+			font-size: 2vw;
+			text-align: center;
+		}
+
+	.thumbnail/*creates row with the thumnail images and links*/
+		{
+			float:left;
+			max-width: 20%;
+			padding: 2.5%;
+			text-align: center;
+		}
+
+
+
+	.button{
+		background: #1d1d1d;
+		text-transform: uppercase;
+		color: #FFF;
+		text-decoration: none;
+		padding: 2px;
+		border-radius: 2vw;
+		font-size: 3vw;
+		display: inline-block;
+		width: 15vw;
+	}
+
+	.button_selected{
+		background: #1d1d1d;
+		text-transform: lowercase;
+		color: #ddd;
+		padding: 2px;
+		border-radius: 2vw;
+		font-size: 3vw;
+		display: inline-block;
+		width: 15vw;
+	}
+	.photo_credit{
+
+		font-size: 2vw;
+		padding-left: 5%;
+	}
+
+
+
+	body/*black backround for exposed "main" padding areas*/
+		{
+			background: #090909;
+			font-family: 'Indie Flower', sans-serif;
+		}
+
+
+
+	nav ul li {
+			display: inline-block;
+			float:left;
+			text-align: center;
+			max-width: 15%;
+			margin-left: 2.5%;
+		
+	}
+
+	nav ul{
+		margin-left: 0;
+	}
+
+	img/* round image corners */
+		{
+			width: 100%;
+			border-radius: 6px;
+			margin-bottom: 2px;
+		}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>D3 tutorial - v8 transitions, or movements</title>
+	<meta charset="utf-8"> 
+    <!-- css to clear browser default images -->
+    <link  rel="stylesheet"  href="css/normalize.css">
+    <!-- link to pull text style in-->
+    <link  href="http://fonts.googleapis.com/css?family=Oxygen:400,300,700"  rel="stylesheet" type="text/css"><!-- load customed css -->
+    <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+    <link  rel="stylesheet"  href="css/style.css">
+    <!-- set browser view size -->
+    <meta name="viewport" content="initial-scale=1">
+	<script src="d3/d3.js"></script></head>
+
+<body>
+Test<!-- specify window -->
+	<script>
+	var canvas = d3.select('body')
+		.append('svg')
+		.attr('width',500)
+		.attr('height',500);
+	</script>
+
+	<!-- creating circle-1-->
+	<script>
+	var circle1 = canvas.append('circle')
+			.attr('cx',50)
+			.attr('cy',50)
+			.attr('r',25)
+			.attr('fill','black')
+	</script>
+
+
+	<!-- Moving the first circle  -->
+	<script>
+	circle1.transition()
+		/*how long?*/
+		.duration(1500)
+		.delay(500)
+		.attr('cx',200)
+		.each('start',function() { d3.select(this).attr('fill','black');})
+		.each('end',function() { d3.select(this).attr('fill','black');})
+		
+	var circle_stacker1 = canvas.append('circle')
+		.attr('cx',200)
+		.attr('cy',50)
+		.attr('r',0)
+		.attr('fill','black');
+
+
+	/*looks like spere is popping through dark layer*/
+	for (i=1; i<=25; ++i){
+		var rad = Math.pow(i,2)/i
+		circle_stacker1.transition()
+		.delay(1500)
+		.duration(1000)
+		.attr('r',rad)
+		.attr('fill','blue')
+	};
+
+		circle_stacker1.transition()
+		.delay(2500)
+		.duration(1000)
+		.
+
+
+
+
+	
+	</script>
+
+
+
+
+
+	<!-- creating circle-2-->
+	<script>
+	var circle2 = canvas.append('circle')
+			.attr('cx',125)
+			.attr('cy',400)
+			.attr('r',25);
+	</script>
+
+	<script>
+
+
+	circle2.transition()
+		.duration(500)/*mili seconds-500default*/
+		.delay(10000)/*when circle 1 hits circle 2*/
+		.transition()
+		.each('start',function() { d3.select(this).attr('fill','black');})
+		.attr('cx',126)
+		.attr('cy',420.4)
+		.each('end',function() { d3.select(this).attr('fill','red');})
+
+	</script>
+
+</body>
+</html>

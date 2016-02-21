@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>D3 tutorial - v8 transitions, or movements</title>
+	<meta charset="utf-8"> 
+    <!-- css to clear browser default images -->
+    <link  rel="stylesheet"  href="css/normalize.css">
+    <!-- link to pull text style in-->
+    <link  href="http://fonts.googleapis.com/css?family=Oxygen:400,300,700"  rel="stylesheet" type="text/css"><!-- load customed css -->
+    <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+    <link  rel="stylesheet"  href="css/style.css">
+    <!-- set browser view size -->
+    <meta name="viewport" content="initial-scale=1">
+	<script src="http://d3js.org/d3.v3.min.js"></script></head>
+
+<body>
+Test
+	<script>
+
+
+	var canvas = d3.select('body')
+		.append('svg')
+		.attr('width',500)
+		.attr('height',500)
+
+	var circle = canvas.append('circle')
+			.attr('cx',50)
+			.attr('cy',50)
+			.attr('r',25);
+
+	circle.transition()
+		.duration(1500)/*mili seconds-500default*/
+		.delay(1000)
+		.attr('cx',200)
+		.transition()
+		.attr('cy',200)
+		.transition()
+		.attr('cx',50)
+		.each('end',function() { d3.select(this).attr('fill','blue');})
+		.each('start',function() { d3.select(this).attr('fill','green');});
+
+	</script>
+</body>
+</html>

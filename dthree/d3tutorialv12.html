@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>D3 tutorial - v12 arcs </title>
+	<script src="http://d3js.org/d3.v3.min.js"></script></head>
+<!-- store the data in the same directory that this is sotred in -->
+<body>
+<!-- <h1>to set up a local host (to run in chrome) cd into the directory then "python -m SimpleHTTPServer" to set up a local webserver for the browser to direct to </h1> -->
+	<script>
+
+	var canvas = d3.select('body').append('svg')
+		.attr('width', 500)
+		.attr('height', 500);
+
+	var group = canvas.append('g')
+		.attr('transform', 'translate(100, 100)');
+
+	var r = 100;
+	var p = Math.PI * 2;/*full circle in radians*/
+
+	var arc = d3.svg.arc()/*radians*/
+		.innerRadius(r-20)
+		.outerRadius(r)
+		.startAngle(0)
+		.endAngle(p-1);
+
+
+	group.append('path')
+		.attr('d', arc);
+
+
+
+	</script>
+</body>
+</html>

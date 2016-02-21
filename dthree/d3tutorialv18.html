@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>D3 tutorial - v18 -  Histogram Layout (2/2) </title>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	</head>
+<!-- store the data in the same directory that this is sotred in -->
+<body>
+<!-- <h1>to set up a local host (to run in chrome) cd into the directory then "python -m SimpleHTTPServer" to set up a local webserver for the browser to direct to </h1> -->
+
+
+	<script>
+	var width = 800,
+		height = 500,
+		padding = 50;
+
+
+		d3.csv('ages.csv', function(data){
+
+			var map = data.map(function(i) { return parseInt(i.age); })
+			/*creates a new array of all of the ages, as strings if parseInt() isnt used*/
+
+			var histogram = d3.layout.histogram()
+				.bins(7)/*divides the data into 5 sets, based on seperating the range of values, max and min, by 5 equal sections*/
+				(map)
+
+			var y = d3.scale.linear()
+				.domain([0,d3.max(histogram.map(function (i){return i.length;}))])
+				.range([0,height]);
+
+			var x = d3.scale.linear()
+				.domain([0,d3.max(map)])
+				.range([0,width])
+
+			var xAxis = d3.svg.axis()
+				.scale(x)
+				.orient('bottom');
+
+			var canvas = d3.select('body').append('svg')
+				.attr('width', width)
+				.attr('height', height + padding)
+				.append('g')
+					.attr('transform','translate(20,0)');
+
+			var group = canvas.append('g')
+				.attr('transform', 'translate(0,'+height+')')
+				.call(xAxis);
+
+			var bars = canvas.selectAll('.bar')
+				.data(histogram)
+				.enter()
+				.append('g')
+
+			bars.append('rect')
+				.attr('x', function (d) {return x(d.x); })
+				.attr('y', function (d) {return height - y(d.y);}) /*makes the  bars show up from the bottom, (y, 0) will start at top*/
+				.attr('width',function(d){return x(d.dx); })
+				.attr('height',function(d){return y(d.y) })
+				.attr('fill','steelblue')
+
+			bars.append('text')
+				.attr('x', function (d) {return x(d.x) })
+				.attr('y', function (d) {return height - y(d.y); })
+				.attr('dy','20px')
+				.attr('dx', function (d){return x(d.dx)/2; })
+				.attr('fill', '#fff')
+				.attr('text-anchor', 'middle')
+				.text(function (d) {return d.y; })
+
+				
+		})		
+
+
+
+
+	</script>
+</body>
+</html>

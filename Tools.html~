@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+ 
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link  rel="stylesheet"  href="css/normalize.css">
+    <link  href="http://fonts.googleapis.com/css?family=Oxygen:400,300,700"  rel="stylesheet" type="text/css">
+    <link  rel="stylesheet"  href="css/style.css">
+    <meta name="viewport" content="initial-scale=1">
+  </head>
+
+  <!-- Body Starts -->
+  <body>
+    
+
+    <!-- Main Section Begins -->
+    <div  id="main">
+    
+
+      <!-- Header -->
+      <header>
+        <!-- Navigation -->
+        <nav>
+          <ul>
+            <li><a href="index.html" class="button">Home</a></li>
+            <li><a href="About.html" class="button">About</a></li>
+            <li><a href="Tools.html" class="button_selected">Tools</a></li>
+            <li><a href="Projects.html" class="button">Projects</a></li>
+            <li><a href="Contact.html" class="button">Contact</a></li>
+
+          </ul>
+        </nav>
+        <!-- Image -->
+        <a  href="#"  class="image"><img src="images/pics11.jpg"  alt=""></a>
+      </header>
+        
+
+
+      <!-- Text Section -->
+      <section>
+        <p>Work In Progress ...</p>
+      </section>
+
+      
+
+      <!-- Send Comment GUI -->
+      <section> 
+        <!-- Create form -->
+        <form  method="POST"  action="sendform.php">
+          
+          <!-- Name input -->
+          Name: <input  name="name"  type="text"><br>
+          
+          <!--Comment Box  input-->
+          Comment: <br>
+            <textarea  name="comment"  rows="10"  cols="30"> Place your comments here.
+            </textarea><br>
+         
+          <!-- click button -->
+          <input type="submit"  name="submit" value="submit">
+
+        </form><!-- End form -->
+      </section><!-- if clicked, comment sent to db -->
+              
+
+
+      <!-- Create Home Button on Bottom -->
+      <div  class="3u">
+      <a  href="index.html"  class="button">Home</a> 
+      </div><!-- 3u end -->
+              
+      <!-- gray line -->
+      <div  class="divider">&nbsp;</div>
+      <div  class="row"><br></div>
+
+
+
+    </div><!-- End Main -->
+  </body><!-- End Body -->
+</html><!-- File given to Browser -->

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>D3 tutorial</title>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+
+<body>
+
+	<p>This is a paragraph</p>
+	<script>
+	/*grab paragraph, edit the text*/
+	d3.select('p').text('Hello World')
+	/*add paragraph instead of selecting one*/
+	d3.select('body').append('p').text('Hi whats up')
+	/*displays the d3 object (d3.) what functions are availible, etc
+	inspect this code, right click, inspect in chrome, go to console*/
+	console.log(d3);
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>D3 tutorial - v11 paths:d3 can generate paths for you </title>
+	<script src="http://d3js.org/d3.v3.min.js"></script></head>
+<!-- store the data in the same directory that this is sotred in -->
+<body>
+<!-- <h1>to set up a local host (to run in chrome) cd into the directory then "python -m SimpleHTTPServer" to set up a local webserver for the browser to direct to </h1> -->
+	<script>
+
+	var canvas = d3.select('body').append('svg')
+		.attr('width', 500)
+		.attr('height', 500);
+
+	var data = [
+		{x: 10, y: 20},
+		{x: 40, y: 60},
+		{x: 50, y: 70}
+
+	];
+
+	var group = canvas.append('g')
+		.attr('transform', 'translate(100, 100)');
+
+	var line = d3.svg.line()
+		.x(function (d) {return d.x; })
+		.y(function (d) {return d.y; });
+
+	group.selectAll('path')/*no paths yet, just selecting the "path" variable*/
+		.data([data1])/*pass in the data as an array*/
+		.enter()
+		.append('path')
+		.attr('d',line)
+		.attr('fill','none')
+		.attr('stroke','#000')
+		.attr('stroke-width', 10);
+
+	</script>
+</body>
+</html>

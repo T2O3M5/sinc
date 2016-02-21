@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>D3 tutorial - v20 -  d3 maps </title>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	</head>
+<!-- store the data in the same directory that this is sotred in -->
+<body>
+<!-- <h1>to set up a local host (to run in chrome) cd into the directory then "python -m SimpleHTTPServer" to set up a local webserver for the browser to direct to </h1> -->
+
+
+	<script>
+
+
+	var canvas = d3.select('body').append('svg')
+		.attr('width', 760)
+		.attr('height', 760)
+
+	d3.json('steelville.geojson', function(data){
+
+		var group = canvas.selectAll('g')
+			.data(data.features)
+			.enter()
+			.append('g')
+
+		var projection = d3.geo.mercator()/*mercator is selected as style from d3 wiki, scale and translare are to display the image to fit better*/
+		var path = d3.geo.path().projection(projection);
+
+		var areas = group.append('path')
+		.attr('d',path)
+		.attr('class','area')
+		.attr('fill', 'steelblue')
+		
+		group.append('text')
+			.attr('x',function (d){return path.centroid(d)[0]; })
+			.attr('y',function (d){return path.centroid(d)[1]; })
+			.attr('text-anchor','middle')
+			.text(function (d) {return d.properties.NAME; })
+
+
+
+	});
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>D3 tutorial - v17 -  Histogram Layout (1/2) </title>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	</head>
+<!-- store the data in the same directory that this is sotred in -->
+<body>
+<!-- <h1>to set up a local host (to run in chrome) cd into the directory then "python -m SimpleHTTPServer" to set up a local webserver for the browser to direct to </h1> -->
+
+
+	<script>
+
+		d3.csv('ages.csv', function(data){
+
+			var map = data.map(function(i) { return parseInt(i.age); })
+			/*creates a new array of all of the ages, as strings if parseInt() isnt used*/
+
+			var histogram = d3.layout.histogram()
+				.bins(5)/*divides the data into 5 sets, based on seperating the range of values, max and min, by 5 equal sections*/
+				(map)
+
+			var canvas = d3.select('body').append('svg')
+				.attr('width', 800)
+				.attr('height', 500)
+
+			var bars = canvas.selectAll('.bar')
+				.data(histogram)
+				.enter()
+				.append('g')
+
+			bars.append('rect')
+				.attr('x', function(d) {return d.x * 5; })
+				.attr('y', 0)
+				.attr('width',function(d){return d.dx * 5 - 5; })
+				.attr('height',function(d){return d.y * 20; })
+				.attr('fill','steelblue')
+
+		})		
+
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+	D3 tutorial - v14 - diagonol line treelayouts (1/2) 
+	</title>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+<!-- store the data in the same directory that this is sotred in -->
+<body>
+<!-- <h1>to set up a local host (to run in chrome) cd into the directory then "python -m SimpleHTTPServer" to set up a local webserver for the browser to direct to </h1> -->
+	<script>
+
+	var canvas = d3.select('body').append('svg')
+		.attr('width',500)
+		.attr('height',500);
+
+	var diagonal = d3.svg.diagonal()
+		.source({x: 10, y: 10})
+		.target({x: 300, y: 300});
+
+
+
+	canvas.append('path')
+		.attr('fill', 'none')
+		.attr('stroke','black')
+		.attr('d',diagonal);
+
+
+
+	</script>
+</body>
+</html>

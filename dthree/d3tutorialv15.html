@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>D3 tutorial - v15 -  treelayout (2/2) </title>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	</head>
+<!-- store the data in the same directory that this is sotred in -->
+<body>
+<h1>to set up a local host (to run in chrome) cd into the directory then "python -m SimpleHTTPServer" to set up a local webserver for the browser to direct to </h1>
+	<script>
+
+	var canvas = d3.select('body').append('svg')
+		.attr('width',500)
+		.attr('height',500)
+		.append('g')/*everything in the canvas will be a g element*/
+			.attr('transform','translate(50,50)');
+
+	var tree = d3.layout.tree()/*create a tree layout*/
+		.size([400,400]);/*size of tree layout*/
+
+	d3.json("mydata.json", function(data){/*callback function to set the name of the data, "data"*/
+
+		var nodes = tree.nodes(data); /*breaks the data into nodes and give them all xy coorcinates accordinglyt*/
+		var links = tree.links(nodes);/*give the different coordinates to the nodes that are the begining/end of the tree links*/
+		
+		var node = canvas.selectAll('.node')
+			.data(nodes)
+			.enter()
+			.append('g')
+				.attr('class','node')
+				.attr('transform',function(d){return "translate("+d.y+","+d.x+")";})/*transform the location based on the x and y locations given by the tree break down*/
+
+
+		node.append('circle')/*adds blue dot for each element*/
+			.attr('r',5)
+			.attr('fill','steelblue');
+
+		node.append('text')/*adds the name from json to corresponding node*/
+			.text(function(d){return d.name;})
+
+		var diagonal = d3.svg.diagonal()
+			.projection(function(d){return [d.y, d.x];});
+
+		canvas.selectAll('.link')
+			.data(links)
+			.enter()
+			.append('path')
+			.attr('class','link')
+			.attr('fill','none')
+			.attr('stroke','#ADADAD')
+			.attr('d',diagonal);
+
+
+
+
+	})
+
+
+
+	</script>
+</body>
+</html>
